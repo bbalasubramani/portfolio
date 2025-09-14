@@ -1,8 +1,5 @@
 # My Professional Portfolio
 
-[![GitHub Stars](https://img.shields.io/github/stars/[YOUR_GITHUB_USERNAME]/[YOUR_REPOSITORY_NAME]?style=social)](https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPOSITORY_NAME]/stargazers)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 ---
 
 ## 🚀 Live Demo
