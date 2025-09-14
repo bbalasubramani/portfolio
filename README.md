@@ -86,6 +86,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Balasubramani B - [bala026b@gmail.com](mailto:bala026b@gmail.com)
 LinkedIn: [balasubramani-dev](https://linkedin.com/in/balasubramani-dev/)
-Project Link: [https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPOSITORY_NAME]](https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPOSITORY_NAME])
+Project Link: https://github.com/bbalasubramani/portfolio
 
 ---
