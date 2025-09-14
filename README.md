@@ -49,7 +49,7 @@ To get a local copy up and running, follow these simple steps.
     ```
 2.  **Navigate into the project directory:**
     ```bash
-    cd portfolio/client
+    cd portfolio
     ```
 3.  **Open `index.html`:**
     Simply open the `index.html` file in your preferred web browser (e.g., by double-clicking it in your file explorer) to view the portfolio.
