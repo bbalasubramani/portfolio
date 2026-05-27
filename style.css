@@ -229,14 +229,16 @@ nav.nav--scrolled {
   display: none;
   flex-direction: column;
   gap: 5px;
-  cursor: none;
+  cursor: pointer;
   padding: 4px;
+  background: none;
+  border: none;
 }
 
 .nav-hamburger span {
   display: block;
   width: 22px; height: 1px;
-  background: var(--cream);
+  background: var(--black);
   transition: transform 0.3s, opacity 0.3s;
 }
 
@@ -438,6 +440,7 @@ nav.nav--scrolled {
 .hero-image img {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   filter: grayscale(100%) contrast(1.05);
   mix-blend-mode: multiply;
   animation: imgReveal 1.3s cubic-bezier(0.77, 0, 0.18, 1) forwards;
@@ -446,7 +449,6 @@ nav.nav--scrolled {
   object-position: bottom center;
   transform: scale(0.85);
   transform-origin: bottom center;
- 
 }
 
 @keyframes imgReveal {
@@ -950,6 +952,13 @@ section .section-inner {
   margin: 0 auto;
 }
 
+.resume-content img,
+.resume-photo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Resume blocks */
 .resume-block {
   /* Glassmorphism card */
@@ -999,126 +1008,29 @@ section .section-inner {
 .resume-entry-title {
   font-weight: 500;
   font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  flex-wrap: wrap;
+  color: var(--black);
 }
 
-.resume-link {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--blue);
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  transition: opacity 0.2s;
-}
-
-.resume-link:hover { opacity: 0.65; }
-
-.resume-entry-sub {
+.resume-entry-org {
   font-size: 0.8rem;
-  color: var(--mid);
-  margin: 0.2rem 0;
-  letter-spacing: 0.03em;
+  color: var(--blue);
+  margin-bottom: 0.3rem;
 }
 
 .resume-entry-date {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   color: var(--mid);
-  letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
-}
-
-.resume-bullets {
-  padding-left: 1.1rem;
-  font-size: 0.85rem;
-  color: #444;
-  line-height: 1.75;
-}
-
-.resume-bullets li { margin-bottom: 0.25rem; }
-
-/* ── DOWNLOAD CV BUTTON ── */
-.btn-cv {
-  display: inline-block;
-  margin-top: 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--cream);
-  background: var(--blue);
-  padding: 0.9rem 2.2rem;
-  border-radius: 100px;
-  border: none;
-  transition: box-shadow 0.3s, transform 0.3s, background 0.3s;
-}
-
-.btn-cv:hover {
-  background: #3a7de0;
-  box-shadow:
-    0 0 0 6px rgba(79, 142, 247, 0.15),
-    0 8px 30px rgba(79, 142, 247, 0.35);
-  transform: translateY(-2px);
-}
-
-/* ── RESUME PHOTO ── */
-.resume-photo {
-  position: sticky;
-  top: 7rem;
-  text-align: center;
-}
-
-.resume-photo img {
-  width: 100%;
-  max-width: 340px;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  object-position: top center;
-  filter: grayscale(100%) contrast(1.04);
-  display: block;
-  margin: 0 auto;
-  border: 1px solid rgba(79, 142, 247, 0.25);
-  box-shadow:
-    0 0 0 6px rgba(79, 142, 247, 0.06),
-    0 24px 60px rgba(0, 0, 0, 0.14),
-    0 0 40px rgba(79, 142, 247, 0.1);
-  animation: photoFloat 6s ease-in-out infinite;
-}
-
-@keyframes photoFloat {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
-}
-
-.resume-photo-label {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
   letter-spacing: 0.05em;
-  margin-top: 1.2rem;
-}
-
-.resume-photo-sub {
-  font-size: 0.78rem;
-  color: var(--mid);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 /* ============================================================
    13. CONTACT
    ============================================================ */
 #contact {
-  background: var(--black);
-  color: var(--cream);
   text-align: center;
-  padding: 10rem var(--section-px);
-  border: none;
+  padding: var(--section-py) var(--section-px);
 }
 
 .contact-small {
@@ -1126,262 +1038,331 @@ section .section-inner {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--mid);
   margin-bottom: 2rem;
 }
 
 .contact-heading {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 10vw, 9rem);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
   font-weight: 800;
-  line-height: 0.92;
-  margin-bottom: 3.5rem;
+  line-height: 0.95;
   letter-spacing: -0.03em;
+  margin-bottom: 4rem;
 }
 
-/* Contact links — underline draw animation */
 .contact-links {
   display: flex;
-  justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .contact-link {
-  position: relative;
-  color: var(--cream);
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
   text-decoration: none;
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding-bottom: 3px;
-}
-
-.contact-link::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: 0;
-  width: 0; height: 1px;
-  background: var(--blue);
-  transition: width 0.4s var(--ease-out);
-}
-
-.contact-link:hover::after {
-  width: 100%;
+  color: var(--black);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.5rem;
+  transition: color 0.25s, border-color 0.25s;
 }
 
 .contact-link:hover {
   color: var(--blue);
-  transition: color 0.25s;
+  border-color: var(--blue);
 }
 
 /* ============================================================
    14. FOOTER
    ============================================================ */
 footer {
-  background: var(--black);
-  color: rgba(240, 237, 230, 0.28);
   text-align: center;
-  padding: 2rem;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem var(--section-px);
+  font-size: 0.7rem;
+  color: var(--mid);
+  letter-spacing: 0.08em;
+  border-top: 1px solid var(--line);
 }
 
 /* ============================================================
-   15. GLASSMORPHISM — SCROLL-TRIGGERED BLUR
-   (skill cards get blur class via IntersectionObserver in JS)
-   ============================================================ */
-
-/* When skill section enters viewport — cards get a brief frosted moment */
-.skills-in-view .skill-card {
-  animation: glassIn 0.6s var(--ease-out) forwards;
-}
-
-@keyframes glassIn {
-  0% {
-    background: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
-  }
-  40% {
-    background: rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-  }
-  100% {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-  }
-}
-
-/* When scrolled PAST skills section — blur dissolves */
-.skills-gone .skill-card {
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  background: rgba(255, 255, 255, 0.02);
-  transition: background 0.8s, backdrop-filter 0.8s;
-}
-
-/* ============================================================
-   16. RESPONSIVE — TABLET (≤ 1024px)
-   ============================================================ */
-@media (max-width: 1024px) {
-  :root {
-    --section-py: 5.5rem;
-    --section-px: 2.5rem;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Hero — full bg image on tablet */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    min-height: 100svh;
-    justify-content: flex-end;
-  }
-
-  .hero-image {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    display: block;
-    z-index: 1;
-  }
-
-  .hero-image img { object-position: top center; }
-
-  .hero-image::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    mask-image: linear-gradient(to bottom, transparent 30%, black 85%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 30%, black 85%);
-    z-index: 1;
-  }
-
-  .hero-image::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(240, 237, 230, 0) 40%, var(--cream) 100%);
-    z-index: 2;
-  }
-
-  .hero-left {
-    padding: 0 2.5rem 2.5rem;
-    z-index: 3;
-  }
-
-  .side-label, .side-year, .v-line { display: none; }
-
-  .hero-stats { gap: 2rem; margin-bottom: 1.2rem; }
-  .stat-num   { font-size: 2rem; }
-  .hero-scroll { margin-top: 1.5rem; }
-
-  /* About */
-  #about { grid-template-columns: 1fr 1.5fr; gap: 4rem; }
-
-  /* Resume */
-  .resume-layout { grid-template-columns: 55% 45%; gap: 3.5rem; }
-}
-
-/* ============================================================
-   17. RESPONSIVE — MOBILE (≤ 768px)
+   MOBILE RESPONSIVENESS (375px - 480px)
    ============================================================ */
 @media (max-width: 768px) {
   :root {
-    --section-py: 4rem;
-    --section-px: 1.4rem;
+    --section-py: 3.5rem;
+    --section-px: 1.5rem;
   }
 
-  /* Nav */
-  nav { padding: 1rem 1.4rem; }
-  .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
-  .nav-mobile-menu { display: flex; }
-  .nav-cta { display: none; }
+  /* ── NAVIGATION ── */
+  .nav-links {
+    display: none;
+  }
 
-  /* Hero */
-  .hero-left { padding: 0 1.4rem 2rem; }
-  .hero-title { font-size: clamp(4rem, 18vw, 6rem); }
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-hamburger span {
+    background: var(--black);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 80vh;
+  }
+
+  .hero-left {
+    padding: 2rem 1.5rem 3rem 1.5rem;
+    justify-content: center;
+  }
+
+  .hero-image {
+    display: none;
+  }
+
+  .side-label,
+  .side-year,
+  .v-line {
+    display: none;
+  }
+
   .hero-stats {
-    gap: 0;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
   }
-  .stat-num   { font-size: 1.6rem; }
-  .stat-label { font-size: 0.58rem; }
-  .hero-scroll { margin-top: 1.2rem; }
 
-  /* About */
+  .stat-num {
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    line-height: 1;
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+  }
+
+  .hero-scroll {
+    margin-top: 2rem;
+    font-size: 0.7rem;
+  }
+
+  /* ── ABOUT ── */
   #about {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  .about-heading { position: static; }
 
-  /* Skills */
-  .skills-grid { grid-template-columns: 1fr; }
-
-  /* Projects */
-  .project-item {
-    grid-template-columns: 40px 1fr;
-    gap: 1rem;
+  .about-heading {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    position: relative;
+    top: auto;
+    sticky: none;
   }
-  .project-links { grid-column: 2; }
-  .project-arrow { display: none; }
 
-  /* Experience */
+  .about-body p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .about-body p:first-child {
+    font-size: 1rem;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+  }
+
+  .skill-card {
+    padding: 1.2rem;
+  }
+
+  .skill-category {
+    font-size: 0.6rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .skill-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .project-item {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    align-items: auto;
+  }
+
+  .project-item::before {
+    display: none;
+  }
+
+  .project-item:hover {
+    padding-left: 0;
+    box-shadow: none;
+    background: none;
+  }
+
+  .project-num {
+    display: none;
+  }
+
+  .project-name {
+    font-size: clamp(1.1rem, 4vw, 1.55rem);
+  }
+
+  .project-desc {
+    font-size: 0.82rem;
+    max-width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .project-tags {
+    gap: 0.3rem;
+    margin-top: 0.6rem;
+  }
+
+  .project-tag {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .project-links {
+    flex-direction: row;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .project-link-btn {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  /* ── EXPERIENCE ── */
   .exp-item {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: 1rem;
+    padding: 1.5rem 0;
   }
 
-  /* Certs */
-  .certs-grid { grid-template-columns: 1fr; }
+  .exp-date {
+    font-size: 0.65rem;
+    padding-top: 0;
+  }
 
-  /* Resume */
+  .exp-role {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-company {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-detail {
+    font-size: 0.8rem;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .certs-grid {
+    grid-template-columns: 1fr;
+    margin-top: 2rem;
+  }
+
+  .cert-item {
+    padding: 1.2rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .cert-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .cert-name {
+    font-size: 0.85rem;
+  }
+
+  .cert-org {
+    font-size: 0.7rem;
+  }
+
+  /* ── RESUME ── */
   .resume-layout {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
   }
-  .resume-photo { position: static; }
-  .resume-photo img { max-width: 260px; }
 
-  /* Contact */
-  .contact-heading { letter-spacing: -0.02em; }
-  .contact-links { gap: 1.5rem; }
+  .resume-content,
+  .resume-photo {
+    width: 100%;
+  }
 
-  /* Projects header */
-  .projects-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-}
+  .resume-content img {
+    width: 100%;
+    height: auto;
+  }
 
-/* ============================================================
-   18. MISC UTILITIES
-   ============================================================ */
-::selection {
-  background: var(--blue-dim);
-  color: var(--blue);
-}
+  .btn-cv {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+  }
 
-/* Smooth image rendering */
-img {
-  display: block;
-  max-width: 100%;
-}
+  /* ── CONTACT ── */
+  #contact {
+    padding: var(--section-py) var(--section-px);
+  }
 
-/* Focus ring (accessibility) */
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 3px;
+  .contact-small {
+    font-size: 0.65rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-heading {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    gap: 1rem;
+  }
+
+  .contact-link {
+    font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+    padding-bottom: 0.3rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    font-size: 0.65rem;
+    padding: 1.5rem var(--section-px);
+  }
 }
