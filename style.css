@@ -1087,7 +1087,7 @@ footer {
 }
 
 /* ============================================================
-   MOBILE RESPONSIVENESS (375px - 480px)
+   MOBILE RESPONSIVENESS (375px - 768px)
    ============================================================ */
 @media (max-width: 768px) {
   :root {
@@ -1112,19 +1112,41 @@ footer {
     background: var(--black);
   }
 
-  /* ── HERO ── */
+  /* ── HERO (Reference Image Style) ── */
   .hero {
     grid-template-columns: 1fr;
-    min-height: 80vh;
-  }
-
-  .hero-left {
-    padding: 2rem 1.5rem 3rem 1.5rem;
-    justify-content: center;
+    min-height: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
   }
 
   .hero-image {
-    display: none;
+    display: flex;
+    order: -1;
+    width: 100%;
+    height: 50vh;
+    min-height: 400px;
+    background: var(--cream);
+    padding-top: var(--section-py);
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(100%) contrast(1.05);
+    mix-blend-mode: normal;
+    transform: scale(1);
+    animation: imgReveal 1.3s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+  }
+
+  .hero-left {
+    padding: 2.5rem 1.5rem 3rem 1.5rem;
+    justify-content: flex-start;
+    background: var(--cream);
   }
 
   .side-label,
@@ -1135,54 +1157,56 @@ footer {
 
   .hero-stats {
     gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
   }
 
   .stat-num {
-    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
   }
 
   .stat-label {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
 
   .hero-title {
-    font-size: clamp(2.5rem, 8vw, 5.5rem);
-    line-height: 1;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
   }
 
   .hero-sub {
-    font-size: 0.9rem;
-    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    line-height: 1.6;
   }
 
   .hero-scroll {
-    margin-top: 2rem;
-    font-size: 0.7rem;
+    margin-top: 1.5rem;
+    font-size: 0.65rem;
   }
 
   /* ── ABOUT ── */
   #about {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .about-heading {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
     position: relative;
     top: auto;
     sticky: none;
   }
 
   .about-body p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 0.8rem;
   }
 
   .about-body p:first-child {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   /* ── SKILLS ── */
@@ -1192,17 +1216,17 @@ footer {
   }
 
   .skill-card {
-    padding: 1.2rem;
+    padding: 1rem;
   }
 
   .skill-category {
-    font-size: 0.6rem;
-    margin-bottom: 0.7rem;
+    font-size: 0.55rem;
+    margin-bottom: 0.5rem;
   }
 
   .skill-tag {
-    font-size: 0.7rem;
-    padding: 0.15rem 0.5rem;
+    font-size: 0.65rem;
+    padding: 0.12rem 0.4rem;
   }
 
   /* ── PROJECTS ── */
@@ -1210,13 +1234,13 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .project-item {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1.5rem 0;
+    gap: 0.8rem;
+    padding: 1.2rem 0;
     align-items: auto;
   }
 
@@ -1235,90 +1259,101 @@ footer {
   }
 
   .project-name {
-    font-size: clamp(1.1rem, 4vw, 1.55rem);
+    font-size: clamp(1rem, 4vw, 1.55rem);
   }
 
   .project-desc {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     max-width: 100%;
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
   }
 
   .project-tags {
     gap: 0.3rem;
-    margin-top: 0.6rem;
+    margin-top: 0.5rem;
   }
 
   .project-tag {
-    font-size: 0.6rem;
-    padding: 0.15rem 0.5rem;
+    font-size: 0.55rem;
+    padding: 0.1rem 0.4rem;
   }
 
   .project-links {
     flex-direction: row;
-    gap: 0.5rem;
-    padding-top: 0.5rem;
+    gap: 0.4rem;
+    padding-top: 0.3rem;
+    flex-wrap: wrap;
   }
 
   .project-link-btn {
-    font-size: 0.65rem;
-    padding: 0.3rem 0.6rem;
+    font-size: 0.6rem;
+    padding: 0.25rem 0.5rem;
   }
 
   /* ── EXPERIENCE ── */
   .exp-item {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1.5rem 0;
+    gap: 0.5rem;
+    padding: 1.2rem 0;
   }
 
   .exp-date {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     padding-top: 0;
+    color: var(--mid);
   }
 
   .exp-role {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin-bottom: 0.2rem;
+    font-weight: 600;
   }
 
   .exp-company {
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
   }
 
   .exp-detail {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    line-height: 1.6;
   }
 
   /* ── CERTIFICATIONS ── */
   .certs-grid {
     grid-template-columns: 1fr;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+    gap: 0;
   }
 
   .cert-item {
-    padding: 1.2rem 1.5rem;
-    gap: 1rem;
+    padding: 1rem 1.2rem;
+    gap: 0.8rem;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cert-item:last-child {
+    border-bottom: none;
   }
 
   .cert-icon {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     flex-shrink: 0;
   }
 
   .cert-name {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .cert-org {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   /* ── RESUME ── */
   .resume-layout {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .resume-content,
@@ -1329,40 +1364,49 @@ footer {
   .resume-content img {
     width: 100%;
     height: auto;
+    max-width: 100%;
   }
 
   .btn-cv {
     font-size: 0.7rem;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
+    display: inline-block;
   }
 
-  /* ── CONTACT ── */
+  /* ── CONTACT (Reference Image Style - Light Background) ── */
   #contact {
-    padding: var(--section-py) var(--section-px);
+    background: rgba(240, 237, 230, 0.5);
+    padding: 3rem 1.5rem;
+    border-top: 1px solid var(--line);
   }
 
   .contact-small {
-    font-size: 0.65rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.6rem;
+    margin-bottom: 1rem;
+    color: var(--mid);
   }
 
   .contact-heading {
-    font-size: clamp(2rem, 5vw, 2.8rem);
-    margin-bottom: 2rem;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
   }
 
   .contact-links {
-    gap: 1rem;
+    gap: 0.8rem;
   }
 
   .contact-link {
-    font-size: clamp(0.8rem, 2.5vw, 0.95rem);
-    padding-bottom: 0.3rem;
+    font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--mid);
   }
 
   /* ── FOOTER ── */
   footer {
-    font-size: 0.65rem;
-    padding: 1.5rem var(--section-px);
+    font-size: 0.6rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--line);
+    background: var(--cream);
   }
 }
