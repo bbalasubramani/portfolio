@@ -998,39 +998,42 @@ section .section-inner {
 .resume-block-body a {
   color: var(--blue);
   text-decoration: none;
-  transition: opacity 0.2s;
 }
 
-.resume-block-body a:hover { opacity: 0.7; }
-
-.resume-entry { margin-bottom: 1rem; }
-
-.resume-entry-title {
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--black);
-}
-
-.resume-entry-org {
-  font-size: 0.8rem;
-  color: var(--blue);
-  margin-bottom: 0.3rem;
-}
-
-.resume-entry-date {
+.btn-cv {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--mid);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--black);
+  border: 1px solid var(--line);
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  display: inline-block;
+  margin-top: 1.5rem;
+  transition: all 0.25s;
+}
+
+.btn-cv:hover {
+  color: var(--blue);
+  border-color: var(--blue);
+  box-shadow: 0 4px 16px rgba(79, 142, 247, 0.12);
+}
+
+.resume-photo {
+  position: relative;
+}
+
+.resume-photo img {
+  border-radius: 2px;
 }
 
 /* ============================================================
-   13. CONTACT
+   13. CONTACT SECTION
    ============================================================ */
 #contact {
-  text-align: center;
-  padding: var(--section-py) var(--section-px);
+  background: var(--cream);
 }
 
 .contact-small {
@@ -1044,50 +1047,47 @@ section .section-inner {
 
 .contact-heading {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.03em;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
+  color: var(--black);
 }
 
 .contact-links {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
+  gap: 1rem;
+  max-width: var(--max-w);
 }
 
 .contact-link {
-  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  font-size: 1.2rem;
   text-decoration: none;
   color: var(--black);
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(79, 142, 247, 0.3);
+  padding-bottom: 0.3rem;
   transition: color 0.25s, border-color 0.25s;
 }
 
 .contact-link:hover {
   color: var(--blue);
-  border-color: var(--blue);
+  border-bottom-color: var(--blue);
 }
 
-/* ============================================================
-   14. FOOTER
-   ============================================================ */
 footer {
+  padding: 3rem var(--section-px);
   text-align: center;
-  padding: 2rem var(--section-px);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--mid);
   letter-spacing: 0.08em;
+  background: var(--cream);
   border-top: 1px solid var(--line);
 }
 
 /* ============================================================
-   MOBILE RESPONSIVENESS (375px - 768px)
+   14. MOBILE RESPONSIVE (768px and below)
    ============================================================ */
 @media (max-width: 768px) {
   :root {
@@ -1095,58 +1095,58 @@ footer {
     --section-px: 1.5rem;
   }
 
-  /* ── NAVIGATION ── */
-  .nav-links {
-    display: none;
-  }
-
-  .nav-cta {
-    display: none;
-  }
-
-  .nav-hamburger {
-    display: flex;
-  }
-
-  .nav-hamburger span {
-    background: var(--black);
-  }
-
-  /* ── HERO (Reference Image Style) ── */
+  /* Hero section mobile adjustments */
   .hero {
     grid-template-columns: 1fr;
-    min-height: auto;
     height: auto;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-  }
-
-  .hero-image {
-    display: flex;
-    order: -1;
-    width: 100%;
-    height: 50vh;
-    min-height: 400px;
-    background: var(--cream);
-    padding-top: var(--section-py);
-  }
-
-  .hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    filter: grayscale(100%) contrast(1.05);
-    mix-blend-mode: normal;
-    transform: scale(1);
-    animation: imgReveal 1.3s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+    min-height: auto;
   }
 
   .hero-left {
-    padding: 2.5rem 1.5rem 3rem 1.5rem;
+    padding: 3rem 1.5rem 2rem;
     justify-content: flex-start;
+  }
+
+  .hero-stats {
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-num {
+    font-size: 1.8rem;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 4.5rem);
+  }
+
+  .hero-sub {
+    font-size: 0.85rem;
+  }
+
+  .hero-image {
+    height: 300px;
     background: var(--cream);
+    position: relative;
+  }
+
+  /* Mobile photo blur effect — dissolve from bottom */
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(240, 237, 230, 0.5) 40%, rgba(240, 237, 230, 0.85) 70%, rgba(240, 237, 230, 1) 100%);
+    filter: blur(8px);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .hero-image img {
+    transform: scale(0.95);
+    filter: grayscale(100%) contrast(1.05) blur(0.5px);
   }
 
   .side-label,
@@ -1155,258 +1155,203 @@ footer {
     display: none;
   }
 
-  .hero-stats {
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .stat-num {
-    font-size: clamp(1.4rem, 4vw, 2.4rem);
-  }
-
-  .stat-label {
-    font-size: 0.6rem;
-  }
-
-  .hero-title {
-    font-size: clamp(2rem, 6vw, 3.5rem);
-    line-height: 1.1;
-    margin-bottom: 0.8rem;
-  }
-
-  .hero-sub {
-    font-size: 0.85rem;
-    margin-top: 0.5rem;
-    line-height: 1.6;
-  }
-
-  .hero-scroll {
-    margin-top: 1.5rem;
-    font-size: 0.65rem;
-  }
-
-  /* ── ABOUT ── */
-  #about {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .about-heading {
-    font-size: clamp(1.8rem, 5vw, 3.5rem);
-    position: relative;
-    top: auto;
-    sticky: none;
-  }
-
-  .about-body p {
-    font-size: 0.9rem;
-    line-height: 1.65;
-    margin-bottom: 0.8rem;
-  }
-
-  .about-body p:first-child {
-    font-size: 0.95rem;
-  }
-
-  /* ── SKILLS ── */
+  /* Skills grid mobile */
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1px;
   }
 
   .skill-card {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .skill-category {
-    font-size: 0.55rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.6rem;
+    margin-bottom: 0.75rem;
   }
 
   .skill-tag {
-    font-size: 0.65rem;
-    padding: 0.12rem 0.4rem;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
   }
 
-  /* ── PROJECTS ── */
-  .projects-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .project-item {
+  /* About section mobile */
+  #about {
     grid-template-columns: 1fr;
-    gap: 0.8rem;
-    padding: 1.2rem 0;
-    align-items: auto;
+    gap: 2rem;
   }
 
-  .project-item::before {
-    display: none;
+  .about-heading {
+    position: relative;
+    top: auto;
   }
 
-  .project-item:hover {
-    padding-left: 0;
-    box-shadow: none;
-    background: none;
+  .about-body p {
+    font-size: 0.95rem;
+  }
+
+  .about-body p:first-child {
+    font-size: 1.05rem;
+  }
+
+  /* Projects section mobile */
+  .project-item {
+    grid-template-columns: 40px 1fr;
+    gap: 1rem;
+    padding: 1.5rem 0;
   }
 
   .project-num {
-    display: none;
+    font-size: 0.65rem;
   }
 
   .project-name {
-    font-size: clamp(1rem, 4vw, 1.55rem);
+    font-size: 1.2rem;
   }
 
   .project-desc {
     font-size: 0.8rem;
-    max-width: 100%;
-    margin-top: 0.4rem;
-  }
-
-  .project-tags {
-    gap: 0.3rem;
-    margin-top: 0.5rem;
-  }
-
-  .project-tag {
-    font-size: 0.55rem;
-    padding: 0.1rem 0.4rem;
   }
 
   .project-links {
+    margin-top: 1rem;
     flex-direction: row;
-    gap: 0.4rem;
-    padding-top: 0.3rem;
-    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
   .project-link-btn {
-    font-size: 0.6rem;
-    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+    padding: 0.3rem 0.65rem;
   }
 
-  /* ── EXPERIENCE ── */
+  /* Experience section mobile */
   .exp-item {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
-    padding: 1.2rem 0;
+    gap: 1rem;
   }
 
   .exp-date {
-    font-size: 0.6rem;
-    padding-top: 0;
-    color: var(--mid);
-  }
-
-  .exp-role {
-    font-size: 0.9rem;
-    margin-bottom: 0.2rem;
-    font-weight: 600;
-  }
-
-  .exp-company {
-    font-size: 0.75rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .exp-detail {
-    font-size: 0.75rem;
-    line-height: 1.6;
-  }
-
-  /* ── CERTIFICATIONS ── */
-  .certs-grid {
-    grid-template-columns: 1fr;
-    margin-top: 1.5rem;
-    gap: 0;
-  }
-
-  .cert-item {
-    padding: 1rem 1.2rem;
-    gap: 0.8rem;
-    background: var(--cream);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .cert-item:last-child {
-    border-bottom: none;
-  }
-
-  .cert-icon {
-    font-size: 0.9rem;
-    flex-shrink: 0;
-  }
-
-  .cert-name {
-    font-size: 0.8rem;
-  }
-
-  .cert-org {
     font-size: 0.65rem;
   }
 
-  /* ── RESUME ── */
+  .exp-role {
+    font-size: 0.95rem;
+  }
+
+  .certs-grid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+
+  .cert-item {
+    padding: 1.5rem 1.75rem;
+  }
+
+  /* Resume section mobile */
   .resume-layout {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2.5rem;
   }
 
-  .resume-content,
-  .resume-photo {
-    width: 100%;
-  }
-
-  .resume-content img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
+  .resume-heading {
+    font-size: clamp(2rem, 5vw, 3rem);
   }
 
   .btn-cv {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     padding: 0.4rem 0.8rem;
-    display: inline-block;
   }
 
-  /* ── CONTACT (Reference Image Style - Light Background) ── */
+  /* Contact section mobile — Dark background */
   #contact {
-    background: rgba(240, 237, 230, 0.5);
-    padding: 3rem 1.5rem;
-    border-top: 1px solid var(--line);
+    background: #1a1a1a;
+    color: var(--cream);
   }
 
   .contact-small {
-    font-size: 0.6rem;
-    margin-bottom: 1rem;
-    color: var(--mid);
+    color: var(--accent);
   }
 
   .contact-heading {
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
-  }
-
-  .contact-links {
-    gap: 0.8rem;
+    color: var(--cream);
   }
 
   .contact-link {
-    font-size: clamp(0.75rem, 2.5vw, 0.95rem);
-    padding-bottom: 0.25rem;
-    border-bottom: 1px solid var(--mid);
+    color: var(--cream);
+    border-bottom-color: rgba(98, 212, 245, 0.3);
+    font-size: 1rem;
   }
 
-  /* ── FOOTER ── */
+  .contact-link:hover {
+    color: var(--cyan);
+    border-bottom-color: var(--cyan);
+  }
+
   footer {
-    font-size: 0.6rem;
+    background: #1a1a1a;
+    color: var(--accent);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Nav mobile adjustments */
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+
+  nav {
     padding: 1rem 1.5rem;
-    border-top: 1px solid var(--line);
-    background: var(--cream);
+  }
+
+  /* Hide custom cursor on mobile */
+  .cursor-dot,
+  .cursor-trail {
+    display: none;
+  }
+}
+
+/* ============================================================
+   15. SMALLER PHONES (480px and below)
+   ============================================================ */
+@media (max-width: 480px) {
+  :root {
+    --section-py: 2.5rem;
+    --section-px: 1rem;
+  }
+
+  .hero-left {
+    padding: 2rem 1rem 1.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+  }
+
+  .stat-num {
+    font-size: 1.5rem;
+  }
+
+  .hero-stats {
+    gap: 1.5rem;
+  }
+
+  .project-item {
+    grid-template-columns: 30px 1fr;
+  }
+
+  .project-name {
+    font-size: 1rem;
+  }
+
+  .contact-heading {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+  }
+
+  .contact-link {
+    font-size: 0.9rem;
   }
 }
