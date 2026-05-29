@@ -1074,17 +1074,25 @@ section .section-inner {
 }
 
 .qr-outer {
-  border: 1.5px solid #6a5acd;
-  border-radius: 8px;
-  padding: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.20);
   background: #ffffff;
   flex-shrink: 0;
+  padding: 12px;
 }
 
-#qrCanvas {
+.traditional-qr,
+.traditional-qr canvas,
+.traditional-qr img {
   display: block;
-  width: 160px;
   height: 160px;
+  width: 160px;
+}
+
+.traditional-qr canvas,
+.traditional-qr img {
+  image-rendering: pixelated;
 }
 
 .qr-caption {
