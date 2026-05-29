@@ -86,10 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // We mirror heroImg src to resumeImg automatically
   const heroImg   = document.getElementById('heroImg');
   const resumeImg = document.getElementById('resumeImg');
-  heroImg.src  = 'data:image/png;base64,' + b64;
-  resumeImg.src = 'data:image/png;base64,' + b64;
+  if (heroImg) {
+    heroImg.src = 'data:image/png;base64,' + b64;
+  }
 
   if (heroImg && resumeImg) {
+     resumeImg.src = 'data:image/png;base64,' + b64;
     const syncSrc = () => {
       if (heroImg.src) resumeImg.src = heroImg.src;
     };
