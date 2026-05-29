@@ -1234,6 +1234,7 @@ section .section-inner {
   color: var(--cream);
   text-align: center;
   padding: var(--section-py) var(--section-px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .contact-small {
