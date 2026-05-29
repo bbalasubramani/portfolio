@@ -945,8 +945,8 @@ section .section-inner {
 
 .resume-layout {
   display: grid;
-  grid-template-columns: 60% 40%;
-  gap: 5rem;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.75fr);
+  gap: clamp(2rem, 4vw, 4.5rem);
   align-items: start;
   max-width: var(--max-w);
   margin: 0 auto;
@@ -970,7 +970,7 @@ section .section-inner {
 }
 
 /* ── Terminal Window ── */
-.terminal {
+#resume .terminal {
   background: #16181f;
   border: 1px solid #2a2c38;
   border-radius: 14px;
@@ -978,6 +978,23 @@ section .section-inner {
   overflow: hidden;
   font-family: 'JetBrains Mono', monospace;
   box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+  color: #c0caf5;
+}
+
+@media (min-width: 769px) {
+  #resume .resume-terminal-wrap {
+    justify-content: flex-end;
+    position: sticky;
+    top: 7rem;
+  }
+
+  #resume .terminal {
+    width: min(100%, 410px);
+    background: linear-gradient(180deg, #16181f 0%, #101219 100%);
+    border: 1px solid #2a2c38;
+    border-radius: 14px;
+    box-shadow: 0 24px 70px rgba(14, 14, 14, 0.22);
+  }
 }
 
 /* ── Title Bar ── */
@@ -1616,7 +1633,7 @@ footer {
 
   .contact-link {
     font-size: clamp(0.75rem, 2.5vw, 0.95rem);
-    color: rgba(240, 237, 230, 0.88)
+    color: rgba(240, 237, 230, 0.88);
     padding-bottom: 0.25rem;
     border-bottom: 1px solid rgba(240, 237, 230, 0.28);
   }
