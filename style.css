@@ -959,6 +959,174 @@ section .section-inner {
   display: block;
 }
 
+
+
+/* Terminal profile card inside the resume section */
+.resume-terminal-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ── Terminal Window ── */
+.terminal {
+  background: #16181f;
+  border: 1px solid #2a2c38;
+  border-radius: 14px;
+  width: min(400px, 100%);
+  overflow: hidden;
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Title Bar ── */
+.title-bar {
+  background: #1e2030;
+  border-bottom: 1px solid #2a2c38;
+  padding: 11px 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.traffic-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  flex: 0 0 13px;
+}
+
+.dot-red { background: #ff5f57; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #28c840; }
+
+.bar-title {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: #4a4c5e;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* ── Body ── */
+.term-body {
+  padding: 20px 22px 24px;
+}
+
+.term-row {
+  margin-bottom: 16px;
+}
+
+.term-row:last-child { margin-bottom: 0; }
+
+/* ── Text Colours ── */
+.c-prompt { color: #4a4c5e; font-size: 13px; }
+.c-cmd { color: #7dcfff; font-size: 13px; }
+.c-arrow { color: #bb9af7; font-weight: 700; font-size: 14px; }
+.c-name { color: #bb9af7; font-size: 14px; font-weight: 700; }
+.c-muted { color: #4a4c5e; font-size: 12px; margin-top: 2px; }
+
+/* ── Status Badge ── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(40, 200, 64, 0.10);
+  border: 1px solid #28c840;
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12px;
+  color: #28c840;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #28c840;
+}
+
+/* ── QR Section ── */
+.qr-section {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.qr-outer {
+  border: 1.5px solid #6a5acd;
+  border-radius: 8px;
+  padding: 8px;
+  background: #1e1a2e;
+  flex-shrink: 0;
+}
+
+.qr-caption {
+  font-size: 10px;
+  color: #4a4c5e;
+  text-align: center;
+  margin-top: 7px;
+}
+
+/* ── Link Buttons ── */
+.link-col {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;
+  padding-top: 2px;
+}
+
+.gh-ref {
+  color: #bb9af7;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.term-btn {
+  border-radius: 4px;
+  padding: 7px 0;
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  cursor: pointer;
+  width: 100%;
+  background: transparent;
+  border: 1px solid;
+  transition: opacity 0.15s;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.term-btn:hover { opacity: 0.7; }
+.btn-github { color: #7dcfff; border-color: #7dcfff; }
+.btn-linkedin { color: #bb9af7; border-color: #bb9af7; }
+.btn-email { color: #f7768e; border-color: #f7768e; }
+
+/* ── Footer ── */
+.term-footer {
+  border-top: 1px solid #2a2c38;
+  padding-top: 13px;
+  margin-top: 16px;
+  font-size: 11px;
+  color: #4a4c5e;
+}
+
+/* ── Cursor ── */
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 13px;
+  background: #7dcfff;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
 /* Resume blocks */
 .resume-block {
   /* Glassmorphism card */
@@ -1398,6 +1566,25 @@ footer {
     font-size: 0.7rem;
     padding: 0.4rem 0.8rem;
     display: inline-block;
+  }
+
+   
+
+  .terminal {
+    width: min(400px, 100%);
+  }
+
+  .term-body {
+    padding: 18px 16px 22px;
+  }
+
+  .qr-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .link-col {
+    width: 100%;
   }
 
   /* ── CONTACT (Mobile Black Finish) ── */
