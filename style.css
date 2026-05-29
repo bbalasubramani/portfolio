@@ -1252,6 +1252,7 @@ section .section-inner {
   line-height: 0.95;
   letter-spacing: -0.03em;
   margin-bottom: 4rem;
+  color: var(--cream);
 }
 
 .contact-links {
@@ -1266,15 +1267,15 @@ section .section-inner {
 .contact-link {
   font-size: clamp(0.9rem, 3vw, 1.1rem);
   text-decoration: none;
-  color: var(--black);
+  color: rgba(240, 237, 230, 0.88);
   border-bottom: 1px solid var(--line);
   padding-bottom: 0.5rem;
   transition: color 0.25s, border-color 0.25s;
 }
 
 .contact-link:hover {
-  color: var(--blue);
-  border-color: var(--blue);
+  color: var(--cyan);
+  border-color: rgba(98, 212, 245, 0.65);
 }
 
 /* ============================================================
