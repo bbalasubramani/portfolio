@@ -1286,7 +1286,7 @@ section .section-inner {
 
 .contact-link {
   font-size: clamp(0.9rem, 3vw, 1.1rem);
-  text-decoration: none;
+  
   color: rgba(240, 237, 230, 0.88);
   border-bottom: 1px solid var(--line);
   padding-bottom: 0.5rem;
