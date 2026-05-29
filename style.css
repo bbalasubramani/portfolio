@@ -1075,25 +1075,28 @@ section .section-inner {
 
 .qr-outer {
   --qr-size: 160px;
+  --qr-padding: 12px;
+  align-items: center;
+  background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 4px;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.20);
-  background: #ffffff;
+  box-sizing: content-box;
+  display: flex;
   flex-shrink: 0;
-  padding: 12px;
-}
-
-.traditional-qr {
-  display: block;
-  height: calc(var(--qr-size) + 24px);
-  width: calc(var(--qr-size) + 24px);
+  height: var(--qr-size);
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--qr-padding);
+  width: var(--qr-size);
 }
 
 .traditional-qr canvas,
-.traditional-qr img {
+.traditional-qr img,
+.traditional-qr table {
   display: block;
-  height: var(--qr-size);
-  width: var(--qr-size);
+  height: var(--qr-size) !important;
+  width: var(--qr-size) !important;
   image-rendering: pixelated;
 }
 
