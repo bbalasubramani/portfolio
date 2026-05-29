@@ -1077,8 +1077,14 @@ section .section-inner {
   border: 1.5px solid #6a5acd;
   border-radius: 8px;
   padding: 8px;
-  background: #1e1a2e;
+  background: #ffffff;
   flex-shrink: 0;
+}
+
+#qrCanvas {
+  display: block;
+  width: 160px;
+  height: 160px;
 }
 
 .qr-caption {
