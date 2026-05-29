@@ -1231,7 +1231,7 @@ section .section-inner {
   background:
       radial-gradient(circle at 50% 0%, rgba(79, 142, 247, 0.14), transparent 34%),
       linear-gradient(180deg, #111111 0%, #050505 100%);
-    color: var(--cream);
+  color: var(--cream);
   text-align: center;
   padding: var(--section-py) var(--section-px);
 }
@@ -1241,7 +1241,7 @@ section .section-inner {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--mid);
+  color: rgba(240, 237, 230, 0.58);
   margin-bottom: 2rem;
 }
 
