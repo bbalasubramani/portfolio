@@ -1081,23 +1081,37 @@ section .section-inner {
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 4px;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.20);
-  box-sizing: content-box;
+  box-sizing: border-box;
   display: flex;
   flex-shrink: 0;
-  height: var(--qr-size);
+  height: calc(var(--qr-size) + (var(--qr-padding) * 2));
   justify-content: center;
+  line-height: 0;
   overflow: hidden;
   padding: var(--qr-padding);
-  width: var(--qr-size);
+  width: calc(var(--qr-size) + (var(--qr-padding) * 2));
 }
 
 .traditional-qr canvas,
 .traditional-qr img,
 .traditional-qr table {
   display: block;
+  flex: 0 0 auto;
   height: var(--qr-size) !important;
+  max-height: 100%;
+  max-width: 100%;
   width: var(--qr-size) !important;
   image-rendering: pixelated;
+}
+
+.traditional-qr table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.traditional-qr td {
+  line-height: 0;
+  padding: 0;
 }
 
 .qr-caption {
