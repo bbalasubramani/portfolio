@@ -371,16 +371,16 @@
             </span>
           </div>
 
-          <!-- open github --omr -->
+          <!-- open github --qr -->
           <div class="term-row">
-            <span class="c-prompt">$ </span><span class="c-cmd">open github --omr</span>
+            <span class="c-prompt">$ </span><span class="c-cmd">open github --qr</span>
           </div>
 
           <!-- QR + Links -->
           <div class="term-row qr-section">
             <div>
               <div class="qr-outer">
-                <canvas id="qrCanvas" width="128" height="128"></canvas>
+                <canvas id="qrCanvas" width="160" height="160"></canvas>
               </div>
               <div class="qr-caption">my code is my CV</div>
             </div>
@@ -424,123 +424,47 @@
   <!-- QR Code Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-  /* ── OMR-style QR renderer ──────────────────────────────────────────
-     Generates a real scannable QR code and redraws it with
-     circular dots in three sizes (large / medium / small),
-     matching the OMR-sheet aesthetic.
+  /* ── Traditional QR renderer ────────────────────────────────────────
+     Keeps the resume QR code high-contrast and square-module based so
+     phone cameras can scan it reliably even inside the compact card.
   ─────────────────────────────────────────────────────────────────── */
 
   (function () {
-    /* CONFIG — edit these to personalise */
-    var QR_URL      = 'https://github.com/bbalasubramani';
-    var DOT_LARGE   = '#9b7fd4';   /* large circle colour  */
-    var DOT_MEDIUM  = '#7b5ea7';   /* medium circle colour */
-    var DOT_SMALL   = '#6a5acd';   /* small circle colour  */
-    var QR_BG       = '#1e1a2e';   /* canvas background    */
-    var FINDER_CLR  = '#9b7fd4';   /* finder pattern colour*/
-    var MODULE_COUNT = 33;         /* QR version 3 = 29 modules; library may pad to 33 */
+    var QR_URL = 'https://github.com/bbalasubramani';
+    var QR_SIZE = 160;
 
     function waitFor(condFn, cb) {
       if (condFn()) { cb(); } else { setTimeout(function(){ waitFor(condFn, cb); }, 60); }
     }
 
     waitFor(function(){ return typeof QRCode !== 'undefined'; }, function () {
-
-      /* 1. Generate QR into a hidden div */
       var tmp = document.createElement('div');
       tmp.style.cssText = 'position:absolute;left:-9999px;top:-9999px';
       document.body.appendChild(tmp);
 
       new QRCode(tmp, {
         text: QR_URL,
-        width: 256,
-        height: 256,
-        correctLevel: QRCode.CorrectLevel.M
+        width: QR_SIZE,
+        height: QR_SIZE,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
       });
 
       waitFor(function(){ return !!tmp.querySelector('canvas'); }, function () {
-
-        var src    = tmp.querySelector('canvas');
-        var sc     = src.getContext('2d');
-        var qSize  = src.width;
-        var cell   = qSize / MODULE_COUNT;
-
-        /* 2. Draw on the visible canvas */
-        var cv  = document.getElementById('qrCanvas');
+        var src = tmp.querySelector('canvas');
+        var cv = document.getElementById('qrCanvas');
         var ctx = cv.getContext('2d');
-        var sz  = 128;
-        cv.width = sz; cv.height = sz;
-        var dc = sz / MODULE_COUNT;
 
-        /* Background */
-        ctx.fillStyle = QR_BG;
-        ctx.fillRect(0, 0, sz, sz);
-
-        /* 3. Draw data modules as circles */
-        for (var r = 0; r < MODULE_COUNT; r++) {
-          for (var c = 0; c < MODULE_COUNT; c++) {
-
-            /* Sample centre pixel of each module */
-            var px = Math.floor(c * cell + cell / 2);
-            var py = Math.floor(r * cell + cell / 2);
-            var pxData = sc.getImageData(px, py, 1, 1).data;
-            if (pxData[0] > 128) continue; /* light module — skip */
-
-            /* Skip finder pattern zones (drawn separately) */
-            var inFinder = (r < 8 && c < 8) ||
-                           (r < 8 && c >= MODULE_COUNT - 8) ||
-                           (r >= MODULE_COUNT - 8 && c < 8);
-            if (inFinder) continue;
-
-            var cx = c * dc + dc / 2;
-            var cy = r * dc + dc / 2;
-
-            /* Random size distribution — large 25%, medium 35%, small 40% */
-            var rnd = Math.random();
-            var radius, color;
-            if (rnd < 0.25)      { radius = dc * 0.44; color = DOT_LARGE; }
-            else if (rnd < 0.60) { radius = dc * 0.30; color = DOT_MEDIUM; }
-            else                  { radius = dc * 0.17; color = DOT_SMALL; }
-
-            ctx.fillStyle = color;
-            ctx.beginPath();
-            ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
-
-        /* 4. Draw the three finder patterns with rounded squares */
-        [
-          [0, 0],
-          [MODULE_COUNT - 7, 0],
-          [0, MODULE_COUNT - 7]
-        ].forEach(function(pos){ drawFinder(ctx, pos[1], pos[0], dc); });
-
+        cv.width = QR_SIZE;
+        cv.height = QR_SIZE;
+        ctx.imageSmoothingEnabled = false;
+        ctx.clearRect(0, 0, QR_SIZE, QR_SIZE);
+        ctx.drawImage(src, 0, 0, QR_SIZE, QR_SIZE);
+        
         tmp.remove();
       });
     });
-
-    /* Rounded rectangle helper */
-    function roundRect(ctx, x, y, w, h, r, color) {
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.moveTo(x + r, y);
-      ctx.lineTo(x + w - r, y);    ctx.arcTo(x + w, y,     x + w, y + r,     r);
-      ctx.lineTo(x + w, y + h - r);ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
-      ctx.lineTo(x + r, y + h);    ctx.arcTo(x,     y + h, x,     y + h - r, r);
-      ctx.lineTo(x, y + r);        ctx.arcTo(x,     y,     x + r, y,         r);
-      ctx.closePath();
-      ctx.fill();
-    }
-
-    /* Finder pattern = outer square + white ring + inner square */
-    function drawFinder(ctx, col, row, dc) {
-      var x = col * dc, y = row * dc, s = 7 * dc;
-      roundRect(ctx, x,          y,          s,          s,          3,   FINDER_CLR);
-      roundRect(ctx, x + dc,     y + dc,     5 * dc,     5 * dc,     2,   QR_BG);
-      roundRect(ctx, x + 2 * dc, y + 2 * dc, 3 * dc,     3 * dc,     1.5, FINDER_CLR);
-    }
-
   })();
 </script>
   
