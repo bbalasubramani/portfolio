@@ -1228,6 +1228,10 @@ section .section-inner {
    13. CONTACT
    ============================================================ */
 #contact {
+  background:
+      radial-gradient(circle at 50% 0%, rgba(79, 142, 247, 0.14), transparent 34%),
+      linear-gradient(180deg, #111111 0%, #050505 100%);
+    color: var(--cream);
   text-align: center;
   padding: var(--section-py) var(--section-px);
 }
