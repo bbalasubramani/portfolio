@@ -379,10 +379,8 @@
           <!-- QR + Links -->
           <div class="term-row qr-section">
             <div>
-              <div class="qr-outer">
-                <canvas id="qrCanvas" width="160" height="160"></canvas>
-              </div>
-              <div class="qr-caption">my code is my CV</div>
+              <div class="qr-outer traditional-qr" id="githubQrCode" aria-label="QR code linking to GitHub profile"></div>
+              <div class="qr-caption">scan for GitHub</div>
             </div>
             <div class="link-col">
               <div class="gh-ref">github.com/<br>bbalasubramani</div>
@@ -425,8 +423,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
   /* ── Traditional QR renderer ────────────────────────────────────────
-     Keeps the resume QR code high-contrast and square-module based so
-     phone cameras can scan it reliably even inside the compact card.
+     Renders a plain black-and-white QR code with a white quiet zone for
+     reliable scanning inside the compact resume terminal card.
   ─────────────────────────────────────────────────────────────────── */
 
   (function () {
@@ -438,31 +436,18 @@
     }
 
     waitFor(function(){ return typeof QRCode !== 'undefined'; }, function () {
-      var tmp = document.createElement('div');
-      tmp.style.cssText = 'position:absolute;left:-9999px;top:-9999px';
-      document.body.appendChild(tmp);
+      var qr = document.getElementById('githubQrCode');
+      if (!qr) return;
 
-      new QRCode(tmp, {
+      qr.innerHTML = '';
+
+      new QRCode(qr, {
         text: QR_URL,
         width: QR_SIZE,
         height: QR_SIZE,
         colorDark: '#000000',
         colorLight: '#ffffff',
         correctLevel: QRCode.CorrectLevel.H
-      });
-
-      waitFor(function(){ return !!tmp.querySelector('canvas'); }, function () {
-        var src = tmp.querySelector('canvas');
-        var cv = document.getElementById('qrCanvas');
-        var ctx = cv.getContext('2d');
-
-        cv.width = QR_SIZE;
-        cv.height = QR_SIZE;
-        ctx.imageSmoothingEnabled = false;
-        ctx.clearRect(0, 0, QR_SIZE, QR_SIZE);
-        ctx.drawImage(src, 0, 0, QR_SIZE, QR_SIZE);
-        
-        tmp.remove();
       });
     });
   })();
