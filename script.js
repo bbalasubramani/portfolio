@@ -55,30 +55,55 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── 3. MOBILE HAMBURGER ── */
   const hamburger  = document.createElement('button');
   hamburger.className = 'nav-hamburger';
-  hamburger.setAttribute('aria-label', 'Menu');
+  hamburger.setAttribute('aria-label', 'Open navigation menu');
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-controls', 'mobile-navigation');
   hamburger.innerHTML = '<span></span><span></span><span></span>';
   nav.appendChild(hamburger);
 
   const mobileMenu = document.createElement('div');
   mobileMenu.className = 'nav-mobile-menu';
-  ['About','Skills','Projects','Experience','Resume','Contact'].forEach(label => {
+  mobileMenu.id = 'mobile-navigation';
+
+  const mobileNavItems = [
+    { label: 'About', href: '#about' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Resume', href: '#resume' },
+    { label: 'Contact', href: '#contact' },
+    { label: 'Get in touch ↗', href: 'mailto:bala026b@gmail.com', className: 'nav-mobile-cta' },
+  ];
+
+  mobileNavItems.forEach(({ label, href, className }) => {
     const a = document.createElement('a');
-    a.href = '#' + label.toLowerCase();
+    a.href = href;
     a.textContent = label;
+    if (className) a.className = className;
     mobileMenu.appendChild(a);
   });
   document.body.appendChild(mobileMenu);
 
+   const setMobileMenuOpen = isOpen => {
+    hamburger.classList.toggle('open', isOpen);
+    mobileMenu.classList.toggle('open', isOpen);
+    document.body.classList.toggle('mobile-menu-open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  };
+
   hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
+    setMobileMenuOpen(!mobileMenu.classList.contains('open'));
   });
 
   mobileMenu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
+      setMobileMenuOpen(false);
     });
+  });
+
+   document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') setMobileMenuOpen(false);
   });
 
   /* ── 4. HERO IMAGE — load from data attr or localStorage ── */
