@@ -258,8 +258,8 @@ nav.nav--scrolled {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
-  padding-top: 5rem;
+  gap: 2.1rem;
+  padding: 6rem 1.5rem 2rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s;
@@ -282,6 +282,18 @@ nav.nav--scrolled {
 }
 
 .nav-mobile-menu a:hover { color: var(--blue); }
+
+.nav-mobile-cta {
+  color: var(--blue) !important;
+  font-size: 1rem !important;
+  border: 1px solid rgba(98, 212, 245, 0.45);
+  border-radius: 999px;
+  padding: 0.85rem 1.25rem;
+}
+
+body.mobile-menu-open {
+  overflow: hidden;
+}
 
 /* ============================================================
    5. HERO
@@ -1356,6 +1368,10 @@ footer {
     background: var(--black);
   }
 
+   .nav-mobile-menu {
+    display: flex;
+  }
+   
   /* ── HERO (Reference Image Style) ── */
   .hero {
     grid-template-columns: 1fr;
