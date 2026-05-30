@@ -1303,7 +1303,7 @@ section .section-inner {
   .contact-link:visited,
   .contact-link:hover,
   .contact-link:focus-visible {
-    color: var(--cyan);
+    color: var(--cream);
   }
 
 }
