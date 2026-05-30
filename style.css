@@ -1308,7 +1308,8 @@ section .section-inner {
 
   .contact-link:hover,
   .contact-link:focus-visible {
-    border-color: rgba(240, 237, 230, 0.72);
+    color: var(--cyan);
+    border-color: rgba(98, 212, 245, 0.65);
   }
 }
 
