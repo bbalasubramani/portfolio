@@ -1289,7 +1289,8 @@ section .section-inner {
   color: rgba(240, 237, 230, 0.88);
   border-bottom: 1px solid rgba(240, 237, 230, 0.28);
   padding-bottom: 0.25rem;
-  text-decoration: none;
+  text-decoration: none !important;
+  text-decoration-line: none;
 }
 
 .contact-link:hover {
@@ -1688,6 +1689,8 @@ footer {
     color: rgba(240, 237, 230, 0.88);
     padding-bottom: 0.25rem;
     border-bottom: 1px solid rgba(240, 237, 230, 0.28);
+    text-decoration: none !important;
+    text-decoration-line: none;
   }
 
   .contact-link:hover {
