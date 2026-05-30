@@ -1306,11 +1306,6 @@ section .section-inner {
     color: var(--cream);
   }
 
-  .contact-link:hover,
-  .contact-link:focus-visible {
-    color: var(--cyan);
-    border-color: rgba(98, 212, 245, 0.65);
-  }
 }
 
 /* ============================================================
