@@ -1300,10 +1300,14 @@ section .section-inner {
 
 @media (min-width: 769px) {
   .contact-link,
-  .contact-link:visited,
+  .contact-link:visited {
+    color: rgba(240, 237, 230, 0.88);
+  }
+   
   .contact-link:hover,
   .contact-link:focus-visible {
-    color: var(--cream);
+    color: var(--cyan);
+    border-color: rgba(98, 212, 245, 0.65);
   }
 
 }
