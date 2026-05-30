@@ -1291,9 +1291,13 @@ section .section-inner {
   padding-bottom: 0.25rem;
   text-decoration: none !important;
   text-decoration-line: none;
+  transition: color 0.25s, border-color 0.25s;
 }
 
-.contact-link:hover {
+.contact-link:hover,
+.contact-link:focus-visible,
+.contact-link:visited:hover,
+.contact-link:visited:focus-visible {
   color: var(--cyan);
   border-color: rgba(98, 212, 245, 0.65);
 }
@@ -1304,12 +1308,13 @@ section .section-inner {
     color: rgba(240, 237, 230, 0.88);
   }
    
-  .contact-link:hover,
-  .contact-link:focus-visible {
+  #contact .contact-link:hover,
+  #contact .contact-link:focus-visible,
+  #contact .contact-link:visited:hover,
+  #contact .contact-link:visited:focus-visible {
     color: var(--cyan);
     border-color: rgba(98, 212, 245, 0.65);
   }
-
 }
 
 /* ============================================================
