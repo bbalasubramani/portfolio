@@ -1324,9 +1324,10 @@ footer {
   text-align: center;
   padding: 2rem var(--section-px);
   font-size: 0.7rem;
-  color: var(--mid);
+  color: rgba(240, 237, 230, 0.48);
   letter-spacing: 0.08em;
   border-top: 1px solid var(--line);
+  background: #050505;
 }
 
 /* ============================================================
